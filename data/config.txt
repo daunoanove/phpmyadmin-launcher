@@ -1,0 +1,13 @@
+<?php declare(strict_types=1);
+
+/**
+ * Do not modify this file because it is generated automatically.
+ * To manage your instances, edit the "config/app.php" file or create it by copying "config/app.sample.php"
+ */
+
+$cfg['blowfish_secret'] = '{blowfishSecret}';
+
+$cfg['Servers'][1]['auth_type'] = 'signon';
+$cfg['Servers'][1]['host'] = 'SingleSignOn';
+$cfg['Servers'][1]['SignonSession'] = 'SignonSession';
+$cfg['Servers'][1]['SignonURL'] = '{signonUrl}';

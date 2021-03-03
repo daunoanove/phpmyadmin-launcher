@@ -86,25 +86,39 @@ function renderData(){
         'hosts': []
     }
 
+    instances.sort(function(a, b) {
+        let userA = a.user.toLowerCase()
+        let userB = b.user.toLowerCase()
+
+        if (userA < userB)
+            return -1 
+        if (userA > userB)
+            return 1
+        return 0
+    });
+
+    let hosts = []
     for ( instanceK in instances ){
-        instances[instanceK]['k'] = instanceK
-        let myK = null
-        for ( dataInstaceK in data['hosts'] ){
-            if ( data['hosts'][dataInstaceK]['host'] === instances[instanceK]['host'] ){
-                myK = dataInstaceK
+        if ( !hosts.includes(instances[instanceK]['host']) ){
+            hosts.push(instances[instanceK]['host'])
+        }
+    }
+    hosts.sort()
+
+
+    for ( hostK in hosts ){
+        data['hosts'].push({
+            'host': hosts[hostK],
+            'instances': [],
+        })
+    }
+
+    for ( instanceK in instances ){
+        for ( hostK in data['hosts'] ){
+            if ( instances[instanceK]['host'] === data['hosts'][hostK]['host'] ){
+                data['hosts'][hostK]['instances'].push(instances[instanceK])
             }
         }
-
-        if ( null === myK ){
-            data['hosts'].push({
-                'host': instances[instanceK]['host'],
-                'instances': []
-            })
-
-            myK = data['hosts'].length-1
-        }
-
-        data['hosts'][myK]['instances'].push(instances[instanceK])
     }
 
     let template = document.getElementById('instance_template').innerHTML

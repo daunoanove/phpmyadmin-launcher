@@ -1,24 +1,49 @@
-# Lumen PHP Framework
+# PhpMyAdmin Launcher
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+With PhpMyAdmin Launcher you can quickly access your databases via Single Sign-On.
+It's a tool only for development environments because there is no authentication system, only a check on the ip address.
+Tested on Linux environment.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
 
-## Official Documentation
+## Prerequisites
+- Git
+- Composer
+- Npm
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
 
-## Contributing
+## Installation
+```sh
+git clone https://github.com/daunoanove/phpmyadmin-launcher.git
+cd phpmyadmin-launcher
+bash install.sh
+```
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Configuration
+Edit config/app.php
+- By default you can access the application only from localhost but if you need you can disable the check or add more ip addresses.
+- Add as many instances as needed.
+```php
+<?php
 
-## Security Vulnerabilities
+return [
+    'useRestrictIpAddress' => true,
+    'allowedIpAddresses' => [
+        '::1',
+        '127.0.0.1'
+    ],
+    'instances' => [
+        [
+            'host' => 'host',
+            'port' => 3306,
+            'user' => 'user',
+            'password' => 'password'
+        ],
+    ]
+];
+```
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Launch
+```sh
+php -S localhost:8010 -t public
+```

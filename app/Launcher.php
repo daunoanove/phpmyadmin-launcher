@@ -97,16 +97,6 @@ class Launcher {
         //session_destroy();
     }
 
-    protected function rules(): array
-    {
-        return [
-            'host' => 'required',
-            'port' => 'required|numeric',
-            'user' => 'required',
-            'password' => 'required',
-        ];
-    }
-
     public function check(): void
     {
         if ( false === $this->checked )
@@ -120,8 +110,10 @@ class Launcher {
                 throw new \App\Exceptions\Launcher\InstancesConfigFileException('Instances config file not found');
             }
 
-            foreach ( $instances as $instance )
+            foreach ( $instances as $k => &$instance )
             {
+                $instance['k'] = $k;
+
                 $validator = \Validator::make($instance, $this->rules());
                 if ( $validator->fails() )
                 {
@@ -131,5 +123,16 @@ class Launcher {
                 $this->instances[] = $validator->validated();
             }
         }
+    }
+
+    protected function rules(): array
+    {
+        return [
+            'k' => 'required|int',
+            'host' => 'required',
+            'port' => 'required|int',
+            'user' => 'required',
+            'password' => 'required',
+        ];
     }
 }

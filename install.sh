@@ -7,7 +7,6 @@ git clone https://github.com/phpmyadmin/phpmyadmin
 cd phpmyadmin
 git checkout STABLE
 composer install
-npm install --ignore-scripts --no-package-lock
-npm run css-compile
+yarn install --production
 cd ../../config
 cp app.sample.php app.php

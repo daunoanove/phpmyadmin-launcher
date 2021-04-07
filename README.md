@@ -8,7 +8,8 @@ Tested on Linux environment.
 ## Prerequisites
 - Git
 - Composer
-- Npm
+- Node.js
+- Yarn
 
 
 ## Installation
@@ -17,6 +18,7 @@ git clone https://github.com/daunoanove/phpmyadmin-launcher.git
 cd phpmyadmin-launcher
 bash install.sh
 ```
+
 
 ## Configuration
 Edit config/app.php

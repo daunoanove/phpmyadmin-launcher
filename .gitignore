@@ -6,3 +6,4 @@ Homestead.yaml
 .phpunit.result.cache
 /config/app.php
 /public/phpmyadmin
+composer.lock

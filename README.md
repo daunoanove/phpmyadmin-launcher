@@ -14,7 +14,7 @@ Tested on Linux environment.
 
 ## Installation
 ```sh
-git clone https://github.com/daunoanove/phpmyadmin-launcher.git
+git clone https://github.com/malvik-lab/phpmyadmin-launcher.git
 cd phpmyadmin-launcher
 bash install.sh
 ```

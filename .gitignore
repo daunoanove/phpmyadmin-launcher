@@ -7,3 +7,4 @@ Homestead.yaml
 /config/app.php
 /public/phpmyadmin
 composer.lock
+composer.lock

@@ -58,7 +58,7 @@ class Launcher {
 
         $mysqli = mysqli_init();
         $mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, 10);
-        $mysqli->real_connect($instance['host'], $instance['user'], $instance['password']);
+        $mysqli->real_connect($instance['host'], $instance['user'], $instance['password'], null, $instance['port']);
 
         return true;
     }
